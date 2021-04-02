@@ -29,6 +29,6 @@ public class ProductoMO {
     @NotNull
     public Integer Cantidad;
 
-    public ProductoMO() {
-    }
+    /*public ProductoMO() {
+    }*/
 }
