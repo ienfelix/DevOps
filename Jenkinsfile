@@ -8,7 +8,6 @@ pipeline {
 
             agent {
                 docker {
-                    label 'maven'
                     image 'maven:3.6.3-openjdk-11'
                 }
             }
