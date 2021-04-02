@@ -1,21 +1,13 @@
-
 pipeline {
     agent any
-
+    tools {
+        maven 'apache-maven-3.0.1' 
+    }
     stages {
-        
-        stage('Build') { 
-
-            agent {
-                docker {
-                    image 'maven:3.6.3-openjdk-11'
-                }
-            }
-
+        stage('Example') {
             steps {
-                sh 'mvn -B -DskipTests clean package' 
+                sh 'mvn --version'
             }
-
         }
     }
 }
