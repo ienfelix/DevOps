@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 @ResponseBody
 @RequestMapping("Producto")
 public class ProductoController {
-	//ProductoController
+    
     @Autowired
     private ProductoNE _productoNE;
 

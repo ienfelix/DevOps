@@ -28,7 +28,4 @@ public class ProductoMO {
     public Double Precio;
     @NotNull
     public Integer Cantidad;
-
-    /*public ProductoMO() {
-    }*/
 }
