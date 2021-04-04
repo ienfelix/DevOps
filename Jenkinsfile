@@ -20,8 +20,7 @@ pipeline {
 
             post {
                 always {
-                    sh 'mkdir test-report'
-                    junit 'test-report/*.xml'
+                    junit 'target/*.xml'
                 }
             }
         }
