@@ -11,5 +11,17 @@ pipeline {
                 sh 'mvn -B -DskipTests clean package'
             }
         }
+        stage('SonarQube analysis') {
+            steps {
+                withSonarQubeEnv('SonarQube') {
+                    sh "mvn clean package sonar:sonar"
+                }
+            }
+        }
+        stage("Quality gate") {
+            steps {
+                waitForQualityGate abortPipeline: true
+            }
+        }
     }
 }
