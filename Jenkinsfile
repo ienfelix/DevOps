@@ -28,8 +28,8 @@ pipeline {
         stage('Análisis de Código') {
             environment {
                 SCANNER_HOME = tool 'SonarQubeScanner'
-                ORGANIZATION = "igorstojanovski-github"
-                PROJECT_NAME = "igorstojanovski_jenkins-pipeline-as-code"
+                ORGANIZATION = "NinjaTi"
+                PROJECT_NAME = "DevOps"
             }
             
             steps {
