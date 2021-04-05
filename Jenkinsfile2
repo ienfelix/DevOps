@@ -11,8 +11,20 @@ pipeline {
                 sh 'mvn -B -DskipTests clean package'
             }
         }
-        stage('SonarQube analysis') {
+
+        stage('test') {
             steps {
+                sh 'mvn test'
+            }
+
+            post {
+                always {
+                    junit 'target/surefire-reports/*.xml'
+                }
+            }
+        }
+        stage('SonarQube analysis') {
+        	steps {
                 withSonarQubeEnv('SonarQube') {
                     sh "mvn clean package sonar:sonar"
                 }
