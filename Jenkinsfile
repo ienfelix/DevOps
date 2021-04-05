@@ -27,12 +27,17 @@ pipeline {
 
         stage('Análisis de Código') {
             environment {
-                scannerHome = tool 'SonarQubeScanner'
+                SCANNER_HOME = tool 'SonarQubeScanner'
+                ORGANIZATION = "igorstojanovski-github"
+                PROJECT_NAME = "igorstojanovski_jenkins-pipeline-as-code"
             }
             
             steps {
                 withSonarQubeEnv('SonarQube') {
-                    sh "${scannerHome}/bin/sonar-scanner"
+                    sh '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.organization=$ORGANIZATION \
+                    -Dsonar.java.binaries=build/classes/java/ \
+                    -Dsonar.projectKey=$PROJECT_NAME \
+                    -Dsonar.sources=.'''
                 }
                     
                 timeout(time: 10, unit: 'MINUTES') {
