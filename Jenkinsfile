@@ -3,17 +3,17 @@ pipeline {
     agent any
 
     tools {
-        maven 'maven-3.6.3' 
+        maven 'Maven' 
     }
 
     stages {
-        stage('Build') {
+        stage('Compilación de Código') {
             steps {
                 sh 'mvn -B -DskipTests clean package'
             }
         }
 
-        stage('test') {
+        stage('Pruebas Unitarias') {
             steps {
                 sh 'mvn test'
             }
@@ -25,7 +25,7 @@ pipeline {
             }
         }
 
-        stage('SonarQube') {
+        stage('Análisis de Código') {
             environment {
                 scannerHome = tool 'SonarQubeScanner'
             }
